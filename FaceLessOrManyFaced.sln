@@ -5,9 +5,17 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Faces", "Faces", "{0C99C8F8-6F5B-42D8-8C1A-CB5750ADA6B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.API", "Faces\Faces.API\Faces.API.csproj", "{1B7C9DBF-0B13-42B9-92B1-7474AB9A9E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.API", "Faces\Faces.API\Faces.API.csproj", "{1B7C9DBF-0B13-42B9-92B1-7474AB9A9E39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.API.Test", "Faces\Faces.API.Test\Faces.API.Test.csproj", "{F59D4FA7-77A5-48CA-AC23-D656E63D116F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.API.Test", "Faces\Faces.API.Test\Faces.API.Test.csproj", "{F59D4FA7-77A5-48CA-AC23-D656E63D116F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Faces.SharedLib", "Faces.SharedLib", "{3F8F9316-B3BF-4507-AB97-3E41EC61671E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging.InterfacesConstants", "Faces.SharedLib\Messaging.InterfacesConstants\Messaging.InterfacesConstants.csproj", "{BB1CCA7E-6026-422D-94AC-205B2B1BF134}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Faces.Web", "Faces.Web", "{A0799C4C-AB71-4075-BA7A-323ABD1CF481}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.WebApp", "Faces.Web\Faces.WebApp\Faces.WebApp.csproj", "{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +31,14 @@ Global
 		{F59D4FA7-77A5-48CA-AC23-D656E63D116F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F59D4FA7-77A5-48CA-AC23-D656E63D116F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F59D4FA7-77A5-48CA-AC23-D656E63D116F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1CCA7E-6026-422D-94AC-205B2B1BF134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1CCA7E-6026-422D-94AC-205B2B1BF134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1CCA7E-6026-422D-94AC-205B2B1BF134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1CCA7E-6026-422D-94AC-205B2B1BF134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +46,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1B7C9DBF-0B13-42B9-92B1-7474AB9A9E39} = {0C99C8F8-6F5B-42D8-8C1A-CB5750ADA6B8}
 		{F59D4FA7-77A5-48CA-AC23-D656E63D116F} = {0C99C8F8-6F5B-42D8-8C1A-CB5750ADA6B8}
+		{BB1CCA7E-6026-422D-94AC-205B2B1BF134} = {3F8F9316-B3BF-4507-AB97-3E41EC61671E}
+		{3BE3BEFE-6F65-46E8-B56C-9A893C0665CC} = {A0799C4C-AB71-4075-BA7A-323ABD1CF481}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A880231B-70D7-4734-8141-EC19C2926BA1}

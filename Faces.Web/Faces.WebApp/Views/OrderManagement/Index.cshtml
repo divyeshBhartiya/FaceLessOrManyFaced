@@ -1,0 +1,67 @@
+﻿ @model Faces.WebApp.ViewModels.OrderListViewModel
+@{
+
+
+    ViewData["Title"] = "Orders Overview";
+}
+<h3 id="PageTitle" > Orders management - overview</h3>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Order Id</th>
+            <th>User Email</th>
+            <th>Image</th>
+            <th>Status</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(var order in Model.Orders)
+        {
+        <tr class="clickable" onclick="location.href='@(Url.Action("Details", "OrderManagement", new {orderId =order.OrderId}))'">
+            <td>@order.OrderId</td>
+            <td>@order.UserEmail</td>
+            <td><img src="@order.ImageString" width="30px" height="30px" /></td>
+            <td>@order.Status</td>
+        </tr>
+        }
+
+    </tbody>
+
+
+</table>
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> settings
+@section Scripts{ 
+     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+      <script type="text/javascript">
+
+         var timerId;
+         const connection = new signalR.HubConnectionBuilder()
+             @*.withUrl('http://localhost:5500/orderhub')*@
+               .withUrl('@settings.Value.SignalRHubUrl/orderhub')
+             .configureLogging(signalR.LogLevel.Debug)
+             .withAutomaticReconnect()
+             .build();
+
+         connection.on('UpdateOrders', (message, orderId) => {
+
+             const encodedMsg = message + ":" + orderId;
+             console.log(encodedMsg);
+             if (orderId && orderId.length) {
+                 toastr.success(orderId + ' Updated to status' + message);
+                 refreshPage();
+             }
+         });
+
+         function refreshPage() {
+             clearTimeout(timerId);
+             timerId = setTimeout(function () {
+                 window.location.reload();
+             }, 1000)
+         };
+
+         connection.start().catch(err => console.error(err.toString()));
+     </script>
+}
