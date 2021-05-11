@@ -11,4 +11,6 @@ For this the application uses the concepts of Microservices, Rabbit MQ and Mass 
 Faces.API: The FacesAzureController uses the Face Detection API provided by Azure. 
 You would just require AzureSubscriptionKey and AzureEndPoint and you are good to go ahead. It is found that, with this setup and configuration for Face Detection, it is easier to Dockerize/Containerize the Faces.API.
 
-Hence, for containerizing it would be wiser to go ahead with the FacesAzureController implementation as FacesController uses libraries whose images are either too heavy or not available.
+Hence, for containerizing it would be wiser to go ahead with the FacesAzureController implementation as FacesController uses libraries whose images are either too heavy or not available. I didn't go ahead with containerization as I was feeling too lazy...lol. 
+
+For containerization, please go ahead with docker-compose as it is easier to learn if you are doing it for the first time.
