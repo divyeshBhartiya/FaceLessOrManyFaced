@@ -17,7 +17,7 @@ namespace EmailService
         public Message(IEnumerable<string> to, string subject, string content, List<byte[]> attachments)
         {
             To = new List<MailboxAddress>();
-            To.AddRange(to.Select(email => new MailboxAddress(email[email.IndexOf('@')..], email)));
+            To.AddRange(to.Select(email => new MailboxAddress(email[..email.IndexOf('@')], email)));
 
             Subject = subject;
             Content = content;

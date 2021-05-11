@@ -29,7 +29,7 @@ namespace EmailService
             emailMessage.From.Add(new MailboxAddress("FaceLessOrManyFaced",_emailConfig.From));
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
-            var bodyBuilder = new BodyBuilder { HtmlBody = string.Format("<h2 style='color:red;'>{0}</h2>", message.Content) };
+            var bodyBuilder = new BodyBuilder { HtmlBody = string.Format("<h4 style='color:black;'>{0}</h4>", message.Content) };
             if (message.Attachments != null && message.Attachments.Any())
             {
                 int i = 1;
