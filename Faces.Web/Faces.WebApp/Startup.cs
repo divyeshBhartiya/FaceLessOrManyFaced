@@ -39,6 +39,7 @@ namespace Faces.WebApp
             });
 
             services.AddMassTransitHostedService();
+
             services.AddHttpClient<IOrderManagementApi, OrderManagementApi>();
 
             services.AddControllersWithViews();

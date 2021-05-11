@@ -1,9 +1,11 @@
 ﻿using Faces.WebApp.ViewModels;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using Refit;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -25,28 +27,26 @@ namespace Faces.WebApp.RestClients
             _restClient = RestService.For<IOrderManagementApi>(httpClient);
 
         }
-        public async Task<OrderViewModel> GetOrderById(Guid orderId)
+        public async Task<HttpResponseMessage> GetOrderById(Guid orderId)
         {
             try
             {
-                return await _restClient.GetOrderById(orderId);
+                HttpResponseMessage response = await _restClient.GetOrderById(orderId);
+                if (response.IsSuccessStatusCode) return response;
+                else return null;
             }
             catch (ApiException ex)
             {
-                if (ex.StatusCode == HttpStatusCode.NotFound)
-                {
-                    return null;
-                }
-                else
-                {
-                    throw;
-                }
+                if (ex.StatusCode == HttpStatusCode.NotFound) return null;
+                else throw;
             }
         }
 
-        public async Task<List<OrderViewModel>> GetOrders()
+        public async Task<HttpResponseMessage> GetOrders()
         {
-            return await _restClient.GetOrders();
+            HttpResponseMessage response = await _restClient.GetOrders();
+            if (response.IsSuccessStatusCode) return response;
+            else return null;
         }
     }
 }

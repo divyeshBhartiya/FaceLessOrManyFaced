@@ -11,25 +11,29 @@ namespace Faces.API.Controllers
     [ApiController]
     public class FacesController : ControllerBase
     {
-        //[HttpPost]
-        //public async Task<Tuple<List<byte[]>, Guid>> ReadFaces(Guid orderId)
-        //{
-
-        //    using var ms = new MemoryStream(2048);
-        //    await Request.Body.CopyToAsync(ms);
-        //    var faces = GetFaces(ms.ToArray());
-        //    return new Tuple<List<byte[]>, Guid>(faces, orderId);
-
-        //}
-
+        /// <summary>
+        /// For Orders API project.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns>Return Tuple of List of Byte Arrays and Guid Order ID</returns>
         [HttpPost]
-        public async Task<List<byte[]>> ReadFaces()
+        public async Task<Tuple<List<byte[]>, Guid>> ReadFaces(Guid orderId)
         {
             using var ms = new MemoryStream(2048);
             await Request.Body.CopyToAsync(ms);
             var faces = GetFaces(ms.ToArray());
-            return faces;
+            return new Tuple<List<byte[]>, Guid>(faces, orderId);
         }
+
+        // For Faces.API.Tests project
+        //[HttpPost]
+        //public async Task<List<byte[]>> ReadFaces()
+        //{
+        //    using var ms = new MemoryStream(2048);
+        //    await Request.Body.CopyToAsync(ms);
+        //    var faces = GetFaces(ms.ToArray());
+        //    return faces;
+        //}
 
         private List<byte[]> GetFaces(byte[] image)
         {

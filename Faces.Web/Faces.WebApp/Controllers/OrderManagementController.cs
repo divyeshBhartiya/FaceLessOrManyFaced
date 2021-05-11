@@ -1,6 +1,7 @@
 ﻿using Faces.WebApp.RestClients;
 using Faces.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,7 +21,10 @@ namespace Faces.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var Orders = await _ordersApi.GetOrders();
+            var response = await _ordersApi.GetOrders();
+            var return_value = await response.Content.ReadAsStringAsync();
+            List<OrderViewModel> Orders = JsonConvert.DeserializeObject<List<OrderViewModel>>(return_value);
+
             var model = new OrderListViewModel
             {
                 Orders = Orders
@@ -37,13 +41,14 @@ namespace Faces.WebApp.Controllers
         [Route("/Details/{orderId}")]
         public async Task<IActionResult> Details(string orderId)
         {
-            var order = await _ordersApi.GetOrderById(Guid.Parse(orderId));
-            order.ImageString = string.Format("data:image/png;base64,{0}",
-                Convert.ToBase64String(order.ImageData));
+            var response = await _ordersApi.GetOrderById(Guid.Parse(orderId));
+            var return_value = await response.Content.ReadAsStringAsync();
+            OrderViewModel order = JsonConvert.DeserializeObject<OrderViewModel>(return_value);
+            order.ImageString = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(order.ImageData));
+
             foreach (var detail in order.OrderDetails)
             {
-                detail.ImageString = string.Format("data:image/png;base64,{0}",
-                Convert.ToBase64String(detail.FaceData));
+                detail.ImageString = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(detail.FaceData));
             }
             return View(order);
         }

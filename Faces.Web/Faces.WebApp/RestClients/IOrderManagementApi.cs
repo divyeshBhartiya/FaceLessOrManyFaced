@@ -2,7 +2,7 @@
 using Refit;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Faces.WebApp.RestClients
@@ -10,9 +10,9 @@ namespace Faces.WebApp.RestClients
     public interface IOrderManagementApi
     {
         [Get("/orders")]
-        Task<List<OrderViewModel>> GetOrders();
+        Task<HttpResponseMessage> GetOrders();
 
         [Get("/orders/{orderId}")]
-        Task<OrderViewModel> GetOrderById(Guid orderId);
+        Task<HttpResponseMessage> GetOrderById(Guid orderId);
     }
 }
