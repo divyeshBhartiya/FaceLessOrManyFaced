@@ -11,6 +11,16 @@ namespace NotificationService.Consumers
 {
     public class OrderProcessedEventConsumer : IConsumer<IOrderProcessedEvent>
     {
+        private const string Content = @"FaceLessOrManyFaced has sent you the faces detected from the picture you uploaded. 
+                  This email is sent from the Notification Microservice of Face(s) Detection App. 
+                  Apart from the Notification Microservice, it has Orders Microservice, MVC Web App for User Interactions, 
+                  Face Detection API powered by OpenCV and Rabbit MQ for communication between these services. 
+                  Order Microservices and Rabbit MQ are acting as orchaestrators and SignalR is used for send Push Notifications 
+                  to the Web App for status updates of the order. 
+                  The idea is to detect and crop the faces from a uploaded image and mail them to the user. 
+                  For more such cool POCs and Web Apps please contact the developer over the weekdays.
+
+                  Cheers!!!";
         private readonly IEmailSender _emailSender;
         public OrderProcessedEventConsumer(IEmailSender emailSender)
         {
@@ -41,8 +51,7 @@ namespace NotificationService.Consumers
             string[] mailAddress = { result.UserEmail };
 
             await _emailSender.SendEmailAsync(new Message(mailAddress, "Your Order: " + result.OrderId,
-                 "FaceLessOrManyFaced has sent you the faces detected from the picture you uploaded. For more such cool POCs and Web Apps please contact the developer over the weekdays." +
-                 " Cheers!!!", facesData));
+                  Content, facesData));
             await context.Publish<IOrderDispatchedEvent>(new
             {
                 context.Message.OrderId,
