@@ -22,5 +22,6 @@ https://www.udemy.com/
 
 ### Thanks a lot to:
 F. Frank Ozz
-Software Architect, Author
+(Software Architect, Author)
+
 https://www.udemy.com/user/f-ozgul/
