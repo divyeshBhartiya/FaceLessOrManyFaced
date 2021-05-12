@@ -17,8 +17,8 @@ namespace NotificationService.Consumers
                   Face Detection API powered by OpenCV and Rabbit MQ for communication between these services. 
                   Order Microservices and Rabbit MQ are acting as orchaestrators and SignalR is used for send Push Notifications 
                   to the Web App for status updates of the order. 
-                  The idea is to detect and crop the faces from a uploaded image and mail them to the user. 
-                  For more such cool POCs and Web Apps please contact the developer over the weekdays.
+                  The idea is to detect and crop the faces from an uploaded image and mail them to the user. 
+                  For more cool POCs and Web Apps please contact the developer over the weekdays.
 
                   Cheers!!!";
         private readonly IEmailSender _emailSender;
