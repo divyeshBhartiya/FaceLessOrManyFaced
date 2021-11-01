@@ -1,6 +1,10 @@
 # FaceLessOrManyFaced
 Don't go over the name of this repo. I am a GOT fan !!!
 
+## Big Picture:
+![Face Detection](https://user-images.githubusercontent.com/16538471/139732534-806bb84f-5736-45fa-b786-e6bc466d13d4.JPG)
+
+
 This is an application which uses Face Detection API from OpenCV (OpenCVSharp4). 
 
 The idea is that the user will upload a picture and the application will detect and crop various faces in the picture and send mail to the user. 
